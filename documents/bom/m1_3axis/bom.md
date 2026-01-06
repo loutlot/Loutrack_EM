@@ -10,13 +10,13 @@
 
 | 秋月コード | 商品名 | M0残り | M1使用 | 備考 |
 |------------|--------|--------|--------|------|
-| 109848 | DRV8835モジュール | 1 | 1 | 3軸駆動（計2枚で4ch→3ch使用） |
-| 116187 | MCP6022-I/P | 1 | 1 | 残り2ch（+増幅2ch分） |
-| 116877 | 10kΩ 0.1% | 7 | 2 | Rf追加分 |
-| 116876 | 1kΩ 0.1% | 9 | 2 | Rg追加分 |
-| 108045 | 47pF C0G | 9 | 2 | 発振防止追加分 |
-| 117059 | 0.1µF C0G | 6 | 2 | デカップリング追加分 |
-| 105002 | 100µF電解 | 3 | 1 | DRV8835 #2用 |
+| [109848](https://akizukidenshi.com/catalog/g/g109848/) | DRV8835モジュール | 1 | 1 | 3軸駆動（計2枚で4ch→3ch使用） |
+| [116187](https://akizukidenshi.com/catalog/g/g116187/) | MCP6022-I/P | 1 | 1 | 残り2ch（+増幅2ch分） |
+| [116877](https://akizukidenshi.com/catalog/g/g116877/) | 10kΩ 0.1% | 7 | 2 | Rf追加分 |
+| [116876](https://akizukidenshi.com/catalog/g/g116876/) | 1kΩ 0.1% | 9 | 2 | Rg追加分 |
+| [108045](https://akizukidenshi.com/catalog/g/g108045/) | 47pF C0G | 9 | 2 | 発振防止追加分 |
+| [117059](https://akizukidenshi.com/catalog/g/g117059/) | 0.1µF C0G | 6 | 2 | デカップリング追加分 |
+| [105002](https://akizukidenshi.com/catalog/g/g105002/) | 100µF電解 | 3 | 1 | DRV8835 #2用 |
 
 ### コイル（追加購入不要）
 
