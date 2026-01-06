@@ -1,0 +1,41 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Cursor
+.cursor/
+
+# Build outputs
+build/
+*.o
+*.elf
+*.bin
+*.hex
+
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# Arduino
+*.ino.cpp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
