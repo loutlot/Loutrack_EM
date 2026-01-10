@@ -188,12 +188,14 @@
    D0 ──┤ GPIO2    5V    ├── 5V出力
    D1 ──┤ GPIO3    GND   ├── GND
    D2 ──┤ GPIO4    3V3   ├── 3.3V出力
-   D3 ──┤ GPIO5    GPIO21├── D6
-   D4 ──┤ GPIO6    GPIO20├── D7 (CS)
-   D5 ──┤ GPIO7    GPIO10├── D10 (MOSI)
-        │          GPIO9 ├── D9  (MISO)
-        │          GPIO8 ├── D8  (SCK)
+   D3 ──┤ GPIO5    GPIO10├── D10 (MOSI)
+   D4 ──┤ GPIO6    GPIO9 ├── D9  (MISO)
+   D5 ──┤ GPIO7    GPIO8 ├── D8  (SCK)
+   D6 ──┤ GPIO21   GPIO20├── D7  (CS)
         └─────────────────┘
+
+左側: D0-D6 (GPIO2,3,4,5,6,7,21)
+右側: 5V, GND, 3V3, D10-D7 (GPIO10,9,8,20)
 ```
 
 ### SPI初期化の注意
