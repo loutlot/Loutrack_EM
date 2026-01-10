@@ -15,15 +15,16 @@ datasheets/
 │   ├── AE-DRV8835-S_akizuki.pdf          ✅ DL済み
 │   └── DRV8835_TI.pdf                    ✅ DL済み
 ├── 3d11_coil/                             # 3軸コイル
-│   └── 3D11-Series_SHINHOM.pdf           ✅ DL済み
+│   └── 2016122392158 (1).pdf             ✅ DL済み
 ├── mcp6022/                               # オペアンプ
-│   └── (要手動DL)
+│   └── Makin_Signed_henyathegenius-Duet_Night_Abyss_OBT_Campaign.pdf ✅ DL済み
 ├── mcp3008/                               # ADC
 │   └── MCP3008_Microchip.pdf             ✅ DL済み
 ├── bat43/                                 # ショットキーダイオード
 │   └── (要手動DL)
 └── esp32c3/                               # MCU
-    └── (要手動DL)
+    ├── 20.png                            ✅ DL済み
+    └── pin_map-2.png                     ✅ DL済み
 ```
 
 ---
@@ -34,22 +35,18 @@ datasheets/
 |----------|----------|--------|------|
 | drv8835/ | AE-DRV8835-S_akizuki.pdf | 1.0MB | 秋月モジュール説明書 |
 | drv8835/ | DRV8835_TI.pdf | 871KB | TI公式データシート |
-| 3d11_coil/ | 3D11-Series_SHINHOM.pdf | 514KB | 3軸コイルシリーズ |
+| 3d11_coil/ | 2016122392158 (1).pdf | 639KB | 3軸コイルシリーズ（3D11） |
 | mcp3008/ | MCP3008_Microchip.pdf | 764KB | ADC公式データシート |
+| mcp6022/ | Makin_Signed_henyathegenius-Duet_Night_Abyss_OBT_Campaign.pdf | 402KB | オペアンプデータシート |
+| esp32c3/ | 20.png | 98KB | ESP32-C3ピン配置図 |
+| esp32c3/ | pin_map-2.png | 154KB | ESP32-C3ピンマップ |
 
 ---
 
 ## 要手動ダウンロード ⚠️
 
-以下のファイルはサイトの制限により自動ダウンロードできませんでした。
+以下のファイルはまだダウンロードできていません。
 ブラウザでダウンロードして該当フォルダに保存してください。
-
-### MCP6022（オペアンプ）
-
-**保存先:** `mcp6022/MCP6022_Microchip.pdf`
-
-**ダウンロードリンク:**
-- [Microchip公式](https://www.microchip.com/en-us/product/MCP6022) → "Documentation" → "Data Sheets"
 
 ### BAT43（ショットキーダイオード）
 
@@ -57,14 +54,6 @@ datasheets/
 
 **ダウンロードリンク:**
 - [ST公式](https://www.st.com/en/diodes-and-rectifiers/bat43.html) → "Resources" → "Datasheet"
-
-### ESP32-C3（MCU）
-
-**保存先:** `esp32c3/ESP32-C3_Datasheet.pdf`
-
-**ダウンロードリンク:**
-- [Espressif公式](https://www.espressif.com/en/products/socs/esp32-c3) → "Resources" → "Datasheet"
-- 直接リンク: https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf
 
 ---
 
@@ -128,6 +117,22 @@ datasheets/
 | サンプルレート | 200ksps @ 5V, 75ksps @ 2.7V |
 | 電源電圧 | 2.7〜5.5V |
 | インターフェース | SPI |
+
+### ESP32-C3 (Espressif)
+
+| 項目 | 値 |
+|------|-----|
+| CPU | 32-bit RISC-V RV32IMC |
+| クロック | 最大 160MHz |
+| SRAM | 400KB |
+| Flash | 外部サポート（最大16MB） |
+| GPIO | 22個（うちADC1: 6個） |
+| Wi-Fi | 802.11 b/g/n |
+| Bluetooth | 5.0 (BLE) |
+| 消費電流（アクティブ） | 約20mA |
+| 消費電流（Deep Sleep） | 約5µA |
+| 電源電圧 | 3.0〜3.6V |
+| 動作温度 | -40°C 〜 +85°C |
 
 ---
 
