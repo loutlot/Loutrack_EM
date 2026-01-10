@@ -10,7 +10,7 @@
 |------|------|--------|
 | MCU | XIAO ESP32C3 | [AliExpress](https://ja.aliexpress.com/item/1005006114576182.html) |
 | 3軸コイル | 3D11-722J | [AliExpress](https://ja.aliexpress.com/item/1005004723068527.html) |
-| **3D11-722Jテストボード** | **自作基板** | [KiCad設計ファイル](../../kicad/3D11_test_Board/) |
+| **3D11-722Jテストボード** | **自作基板** | [KiCad設計ファイル](../../../kicad/3D11_test_Board/) |
 | モータドライバ | DRV8835モジュール | 秋月電子 ([109848](https://akizukidenshi.com/catalog/g/g109848/)) |
 | オペアンプ | MCP6022-I/P | 秋月電子 ([116187](https://akizukidenshi.com/catalog/g/g116187/)) |
 | ADC | MCP3008-I/P | 秋月電子 ([109485](https://akizukidenshi.com/catalog/g/g109485/)) |
@@ -24,8 +24,8 @@
 
 | バージョン | 説明 | KiCadファイル | 3Dレンダリング |
 |------------|------|---------------|----------------|
-| **単体版** | 1枚の基板（プロトタイプ用） | [3D11_test_Board](../../kicad/3D11_test_Board/) | [3D11_test_Board.png](../../kicad/3D11_test_Board/3D11_test_Board.png) |
-| **パネル版** | 10枚を1パネルに（量産用） | [3D11_production](../../kicad/3D11_production/) | [3d11_testboard_batch.png](../../kicad/3D11_production/3d11_testboard_batch.png) |
+| **単体版** | 1枚の基板（プロトタイプ用） | [3D11_test_Board](../../../kicad/3D11_test_Board/) | [3D11_test_Board.png](../../../kicad/3D11_test_Board/3D11_test_Board.png) |
+| **パネル版** | 10枚を1パネルに（量産用） | [3D11_production](../../../kicad/3D11_production/) | [3d11_testboard_batch.png](../../../kicad/3D11_production/3d11_testboard_batch.png) |
 
 💡 **基板発注について:**
 - 単体版: プロトタイプや少量製作に適しています
