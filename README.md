@@ -15,10 +15,10 @@ VRChat等のフルボディトラッキング向け。現在M0（1軸PoC）フ�
 
 | フェーズ | 内容 | 状態 |
 |----------|------|------|
-| **M0** | 1軸ディスクリートPoC | 🔄 部品入手済み、組み立て準備中 |
+| **M0** | 1軸ディスクリートPoC | 🔄 電源＆受信アンプ組み立て完了、ADC接続中 |
 | M1 | 3軸TDM | ⬜ |
 | M1.5 | 自作コイル＆ドライバ強化 | ⬜ |
-| M2 | SMD基板化 | ⬜ |
+| M2 | SMD基板化（バッテリー駆動対応） | 🔄 バッテリー駆動仕様策定完了 |
 | M3 | 推定アルゴリズム | ⬜ |
 | M4 | 製品化 | ⬜ |
 
@@ -106,6 +106,35 @@ A = √(I² + Q²)
                                 └──────────────────────────┘
 ```
 
+## システム構成（M2）
+
+M2では受信機（Tracker）をバッテリー駆動化し、DEEP SLEEP機能で過放電を防止。
+
+```
+┌──────────────────────────────────────────────────────────┐
+│                XIAO ESP32C3 (Tracker)                    │
+│  バッテリー監視 → DEEP SLEEP      SPI ADC読取 → I/Q処理 │
+└──────────┬───────────────────────────────┬───────────────┘
+           │                               │
+           ▼                               ▼
+┌──────────────────┐            ┌──────────────────────────┐
+│ Li-Po 3.7V       │            │       MCP6022            │
+│ (バッテリー)     │            │    (受信アンプ)          │
+└────────┬─────────┘            └────────────┬─────────────┘
+         │                                   │
+         ▼                                   ▼
+┌──────────────────┐            ┌──────────────────────────┐
+│ 電圧監視回路     │            │       3D11-722J          │
+│ (200kΩ分圧)      │            │     (受信コイル)         │
+└────────┬─────────┘            └────────────┬─────────────┘
+         │                                   │
+         ▼                                   ▼
+┌──────────────────┐            ┌──────────────────────────┐
+│ Wake-upボタン    │   磁界     │        MCP3008           │
+│ (D1ピン)         │ ~~~~~~~~→  │         (ADC)            │
+└──────────────────┘            └──────────────────────────┘
+```
+
 ---
 
 ## 使用部品
@@ -125,22 +154,32 @@ A = √(I² + Q²)
 ### M0: 1軸PoC（現在）
 - [x] 部品調達
 - [x] GPIO割り当て
-- [ ] 回路組み立て
-- [ ] I/Q処理で振幅A算出
-- [ ] 距離応答の確認
+- [x] Vmid生成回路組み立て
+- [x] 受信アンプ組み立て・動作確認
+- [ ] ADC接続・動作確認
+- [ ] 送信回路組み立て
+- [ ] PWM生成ファームウェア
+- [ ] I/Q処理ファームウェア
+- [ ] 共振C最適化
+- [ ] 距離・角度応答測定
 
 ### M1: 3軸TDM
 - 3軸送受信でフル姿勢推定
 - Time Division Multiplex（X→Y→Z切替）
+- 軸間干渉対策
 
 ### M1.5: 自作コイル＆ドライバ強化
 - 送信距離拡大のための自作コイル製作
 - より高出力のドライバ選定・電源強化
 - 3m以上のレンジを目指す
 
-### M2: SMD基板化
-- ノイズ低減、再現性向上
-- 小型化
+### M2: SMD基板化（バッテリー駆動対応）
+- [x] バッテリー駆動仕様策定
+- [x] 電圧監視回路設計
+- [x] DEEP SLEEP/Wake-up実装
+- [ ] 回路図設計（KiCad）
+- [ ] 基板レイアウト
+- [ ] 実装・動作確認
 
 ### M3: 推定アルゴリズム
 - 磁界モデルに基づく位置・姿勢推定
@@ -160,7 +199,10 @@ A = √(I² + Q²)
 - [NDI Aurora](https://www.ndigital.com/electromagnetic-tracking/) - 手術ナビゲーション
 
 ### 技術資料
-- [documents/requirements/m0_poc/specification_v0.9.md](documents/requirements/m0_poc/specification_v0.9.md) - 詳細仕様書
+- [documents/requirements/m0_poc/specification_v0.9.md](documents/requirements/m0_poc/specification_v0.9.md) - M0詳細仕様書
+- [documents/requirements/m2_smd/specification.md](documents/requirements/m2_smd/specification.md) - M2バッテリー駆動仕様書
+- [documents/schematics/m2_smd/tracker/power_schematic.md](documents/schematics/m2_smd/tracker/power_schematic.md) - M2電源回路図
+- [documents/progress/experiment_log.md](documents/progress/m0_poc/experiment_log.md) - M0実験ログ
 - [documents/datasheets/](documents/datasheets/) - 部品データシート
 
 ---
@@ -177,7 +219,12 @@ Loutrack_EM/
 │   ├── schematics/        # 回路図
 │   ├── assembly/          # 組み立てガイド
 │   └── datasheets/        # データシート
-└── firmware/              # ファームウェア（今後）
+├── firmware/              # ファームウェア
+│   ├── lib/               # 共通ライブラリ
+│   │   ├── battery_monitor.h/cpp    # バッテリー電圧監視
+│   │   └── power_manager.h/cpp      # 電源管理（DEEP SLEEP）
+│   └── m2_tracker/         # M2受信機ファームウェア
+└── kicad/                 # KiCad設計ファイル
 ```
 
 ---
