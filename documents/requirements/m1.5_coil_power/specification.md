@@ -161,3 +161,4 @@ B ∝ μ₀ × n × I × A / r³
 - [TB6612FNGデータシート](https://toshiba.semicon-storage.com/jp/semiconductor/product/motor-driver-ics/brushed-dc-motor-driver-ics/detail.TB6612FNG.html)
 - [L298Nデータシート](https://www.st.com/resource/en/datasheet/l298.pdf)
 
+

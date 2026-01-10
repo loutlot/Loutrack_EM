@@ -172,3 +172,4 @@ XIAO ESP32C3の3.3V出力近くに0.1µFを追加:
 
 ✅ 電源とVmidの確認が完了したら、[02_rx_amplifier.md](02_rx_amplifier.md) へ進みます。
 
+
