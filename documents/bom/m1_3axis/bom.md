@@ -4,6 +4,8 @@
 
 3軸TDMディスクリート実装用の部品リスト（M0からの追加分）
 
+**M1追加機能**: LIS3DH（3軸加速度センサー）によるHemispheric ambiguity解決
+
 ---
 
 ## M0で購入済み部品からの流用
@@ -27,6 +29,40 @@
 ---
 
 ## M1で追加購入が必要な部品
+
+### LIS3DH（3軸加速度センサー）— Hemispheric Ambiguity解決用
+
+| 入手先 | 商品名 | 価格 | 数量 | 備考 |
+|--------|--------|------|------|------|
+| 秋月電子 | LIS3DHモジュール | 約¥500 | 1 | ブレッドボード対応推奨 |
+| AliExpress | GY-LIS3DH | 約$2-3 | 1 | 安価だが配送時間あり |
+| Adafruit | LIS3DH Breakout | 約$8 | 1 | 品質安定、ライブラリ充実 |
+
+**LIS3DH仕様**:
+- メーカー: STMicroelectronics
+- 電源電圧: 1.71V〜3.6V
+- インターフェース: I2C / SPI
+- I2Cアドレス: 0x18（SA0=GND）または 0x19（SA0=VDD）
+- 消費電力: 超低消費（2µA @ 1Hz）
+- データシート: `documents/requirements/lis3dh/lis3dh.pdf`
+
+**接続（I2C）**:
+
+| LIS3DH | XIAO ESP32C3 | GPIO |
+|--------|--------------|------|
+| SDA | D4 | GPIO6 |
+| SCL | D5 | GPIO7 |
+| VDD | 3.3V | - |
+| GND | GND | - |
+| SA0 | GND | - （アドレス0x18） |
+
+**追加部品（ブレークアウトボードに内蔵の場合は不要）**:
+
+| 部品 | 値 | 数量 | 用途 |
+|------|-----|------|------|
+| プルアップ抵抗 | 4.7kΩ | 2 | I2C SDA, SCL |
+
+---
 
 ### 送信コイル（3D11-722Jから流用）
 
@@ -63,9 +99,11 @@
 | MCP6022 | 1 | 1 | 2（計4ch） | 0 |
 | MCP3008 | 1 | 0 | 1（3ch使用） | 0 |
 | 3D11-722J | 2 | 2 | 4 | **1** |
+| **LIS3DH** | 0 | **1** | **1** | - |
 | 10kΩ (Rf) | 1 | 2 | 3 | 7 |
 | 1kΩ (Rg) | 1 | 2 | 3 | 9 |
 | 47pF | 1 | 2 | 3 | 9 |
+| 4.7kΩ（I2Cプルアップ） | 0 | 2 | 2 | - |
 
 ---
 
@@ -96,10 +134,17 @@
 
 | 信号 | GPIO | 備考 |
 |------|------|------|
-| SPI_CLK | TBD | MCP3008 CLK |
-| SPI_MOSI | TBD | MCP3008 DIN |
-| SPI_MISO | TBD | MCP3008 DOUT |
-| SPI_CS | TBD | MCP3008 CS |
+| SPI_CLK | GPIO8 (D8) | MCP3008 CLK |
+| SPI_MOSI | GPIO10 (D10) | MCP3008 DIN |
+| SPI_MISO | GPIO9 (D9) | MCP3008 DOUT |
+| SPI_CS | GPIO20 (D7) | MCP3008 CS |
+
+### I2C（LIS3DH用）
+
+| 信号 | GPIO | 備考 |
+|------|------|------|
+| I2C_SDA | GPIO6 (D4) | LIS3DH SDA |
+| I2C_SCL | GPIO7 (D5) | LIS3DH SCL |
 
 ---
 
