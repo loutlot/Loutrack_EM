@@ -39,4 +39,7 @@ venv/
 *.tmp
 *.temp
 
+# External sources (copyright/licensing concerns)
+documents/outside_sources/
+
 
